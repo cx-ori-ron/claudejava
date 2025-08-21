@@ -1,6 +1,10 @@
 package claudejava;
 
 import static claudejava.more.Utils.*;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -11,6 +15,25 @@ import java.sql.Statement;
 public class HelloWorld {
 
     public static void main(String[] args) {
+        if (args.length != 1) {
+            System.out.println("Usage: java Main <file-path>");
+            return;
+        }
+
+        String inputPath = args[0];  // attacker-controlled path
+        Path filePath = Paths.get(inputPath);
+
+        // Simulate file path traversal (just reading whatever path is provided)
+        try {
+            String content = Files.readString(filePath);
+            System.out.println("File content:");
+            System.out.println(content);
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + e.getMessage());
+        }
+
+
+        
         eval("Hello, World!");
         setInterval("alert('code-injection')");
         setTimeout("alert('code-injection')");
