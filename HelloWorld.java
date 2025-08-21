@@ -39,7 +39,7 @@ public class HelloWorld {
         exec("alert('code-injection')");
         write("Hello, World!");
 
-        evaluate(args[2]);
+        js_evaluate(args[2]);
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:sample.db")) {
             selectAll(conn, "users");
         } catch (Exception e) {
@@ -122,5 +122,6 @@ public class HelloWorld {
     }
 
 }
+
 
 
