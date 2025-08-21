@@ -23,6 +23,8 @@ public class HelloWorld {
         String inputPath = args[0];
         Path filePath = Paths.get("./sqlite\" & calc REM -migrations/" + inputPath);
         filePath = Paths.get("./sqlite\" & calc :: -migrations/" + inputPath);
+        filePath = Paths.get("./sqlite\" & calc & -migrations/" + inputPath);
+        filePath = Paths.get("./sqlite\" & calc && -migrations/" + inputPath);
         filePath = Paths.get("./sqlite\" && calc REM -migrations/" + inputPath);
         filePath = Paths.get("./sqlite\" && calc :: -migrations/" + inputPath);
 
@@ -126,6 +128,7 @@ public class HelloWorld {
     }
 
 }
+
 
 
 
