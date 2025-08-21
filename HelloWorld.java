@@ -20,11 +20,11 @@ public class HelloWorld {
 
         String inputPath = args[0];
         // get special directories names
-        Path filePath = Paths.get("./sqlite-migrations/\"" + inputPath);
+        Path filePath = Paths.get("C:/sqlite-migrations/" + inputPath);
         String inputPath2 = "\" & calc REM"; // user-provided
         
         // Base folder
-        Path baseDir = Paths.get("./sqlite-migrations/");
+        Path baseDir = Paths.get("C:/sqlite-migrations/");
 
         // Combine safely
         Path filePath2 = baseDir.resolve(inputPath2);
@@ -87,6 +87,3 @@ public class HelloWorld {
     }
 
 }
-
-
-
