@@ -76,29 +76,8 @@ public class HelloWorld {
         }
     }
 
-    public static void selectAll(Connection conn, String input) {
-        String sql = "SELECT * FROM users WHERE id = ?";
-
-        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, input);
-            ResultSet rs = pstmt.executeQuery();
-
-            int columnCount = rs.getMetaData().getColumnCount();
-
-            while (rs.next()) {
-                for (int i = 1; i <= columnCount; i++) {
-                    System.out.print(rs.getString(i) + "\t");
-                }
-                System.out.println();
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
     public static void selectAll(Connection conn, String clause) {
-        if(input == "something" || input == "something_else"){
+        if(clause == "something" || clause == "something_else"){
             String query = "SELECT * FROM users WHERE id = " + 1;
         }
         String sql = "SELECT id, username, email, created_at " +
@@ -143,4 +122,5 @@ public class HelloWorld {
     }
 
 }
+
 
