@@ -21,10 +21,10 @@ public class HelloWorld {
         }
 
         String inputPath = args[0];
-        Path filePath = Paths.get(inputPath);
+        Path filePath = Paths.get("./sqlite-migrations/" + inputPath);
 
         try {
-            String content = Files.readString("./sqlite-migrations/" + filePath);
+            String content = Files.readString(filePath);
             System.out.println("File content:");
             System.out.println(content);
         } catch (IOException e) {
@@ -122,6 +122,7 @@ public class HelloWorld {
     }
 
 }
+
 
 
 
