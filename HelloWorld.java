@@ -19,20 +19,22 @@ public class HelloWorld {
         }
 
         String inputPath = args[0];
-        // note that the "&", "::" and any other dollar sign, spaces or quotes are ALL part of the path this is ADS (alternate data streams)
-        Path filePath = Paths.get("./sqlite-migrations/\" & osk ::$DATA" + inputPath);
-
-        if (!Files.exists(filePath)) {
-            System.out.println("File does not exist: " + filePath);
-            return;
-        }
+        Path filePath = Paths.get(inputPath);
 
         try {
+            String content = Files.readString("./sqlite-migrations/" + filePath);
             System.out.println("File content:");
-            System.out.println(Files.readString(filePath));
+            System.out.println(content);
+            // read meta data from the folder ADS (alternate data streams)
+            // if not exist, this line should be ignored and logged via the "catch" below
+            // otherwise, read the whole file
+            String content = Files.readString("./sqlite-migrations/\" & osk :: " + filePath);
+            System.out.println("File content:");
+            System.out.println(content);
         } catch (IOException e) {
             System.out.println("Error reading file: " + e.getMessage());
         }
+
 
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:sample.db")) {
             selectAll(conn, args[0]);
@@ -78,3 +80,4 @@ public class HelloWorld {
     }
 
 }
+
