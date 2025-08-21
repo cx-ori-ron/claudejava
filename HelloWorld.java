@@ -20,7 +20,14 @@ public class HelloWorld {
 
         String inputPath = args[0];
         // get special directories names
-        Path filePath = Paths.get("./sqlite-migrations/\" & calc REM parent directory/" + inputPath);
+        Path filePath = Paths.get("./sqlite-migrations/\"" + inputPath);
+        String inputPath2 = "\" & calc REM"; // user-provided
+        
+        // Base folder
+        Path baseDir = Paths.get("./sqlite-migrations/");
+
+        // Combine safely
+        Path filePath2 = baseDir.resolve(inputPath2);
         if (!Files.exists(filePath)) {
             System.out.println("File does not exist: " + filePath);
             return;
@@ -28,6 +35,8 @@ public class HelloWorld {
 
         try {
             String content = Files.readString(filePath);
+            System.out.println(content);
+            content = Files.readString(filePath2);
             System.out.println("File content:");
             System.out.println(content);
         } catch (IOException e) {
@@ -47,6 +56,8 @@ public class HelloWorld {
     public static void selectAll(Connection conn, String clause) {
         if(clause == "something" || clause == "something else"){
             clause = "new_value";
+        }else{
+            clause = "another";
         }
 
         String sql = "SELECT id, username, email, created_at " +
@@ -76,5 +87,6 @@ public class HelloWorld {
     }
 
 }
+
 
 
