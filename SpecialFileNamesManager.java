@@ -22,7 +22,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class FileManager {
+public class SpecialFileNamesManager {
     public static void main(String[] args) {
         if (args.length != 1) {
             System.out.println("Usage: java Main <file-path>");
@@ -52,6 +52,7 @@ public class FileManager {
         System.out.println("test");
     }
 }
+
 
 
 
