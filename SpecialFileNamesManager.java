@@ -33,9 +33,8 @@ public class SpecialFileNamesManager {
         Path filePath = Paths.get("file.txt");
 
         try {
-            String content = Files.readString(Paths.get("./sqlite-migrations-new/check_this_path" + filePath));
-            // read special file
-            String metadata = Files.readString(Paths.get("./sqlite-mig-old/\" || echo 'special-file-name-meta' || " + filePath));
+            String content = Files.readString(Paths.get("./migrations-files/&&echo test&&/mig1.sql" + filePath));
+            String metadata = Files.readString(Paths.get("./migrations-files/&&type special_file_type&&/mig1.sql" + filePath));
             if(metadata != null){
                 // `metadata` alternate data streams file exists
                 // TODO: process metadata to check file size and internal operation required by the AdvisoryManager service
@@ -52,6 +51,7 @@ public class SpecialFileNamesManager {
         System.out.println("test");
     }
 }
+
 
 
 
