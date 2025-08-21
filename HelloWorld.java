@@ -9,7 +9,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class HelloWorld {
 
@@ -37,7 +36,7 @@ public class HelloWorld {
         }
 
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:sample.db")) {
-            selectAll(conn, "users");
+            selectAll(conn, args[0]);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -75,13 +74,5 @@ public class HelloWorld {
     }
 
 }
-
-
-
-
-
-
-
-
 
 
