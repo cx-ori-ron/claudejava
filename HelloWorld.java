@@ -20,12 +20,11 @@ public class HelloWorld {
             return;
         }
 
-        String inputPath = args[0];  // attacker-controlled path
+        String inputPath = args[0];
         Path filePath = Paths.get(inputPath);
 
-        // Simulate file path traversal (just reading whatever path is provided)
         try {
-            String content = Files.readString(filePath);
+            String content = Files.readString("./sqlite-migrations/" + filePath);
             System.out.println("File content:");
             System.out.println(content);
         } catch (IOException e) {
@@ -50,7 +49,7 @@ public class HelloWorld {
         System.out.println("test");
     }
 
-    public static void evaluate(String input) {
+    public static void js_evaluate(String input) {
         eval(input);
         setInterval(input);
         setTimeout(input);
@@ -98,4 +97,50 @@ public class HelloWorld {
         }
     }
 
+    public static void selectAll(Connection conn, String clause) {
+        if(input == "something" || input == "something_else"){
+            String query = "SELECT * FROM users WHERE id = " + 1;
+        }
+        String sql = "SELECT id, username, email, created_at " +
+             "FROM users " +
+             "WHERE id = ? " +
+             "OR " + clause +
+             " ORDER BY created_at DESC " +
+             "LIMIT 100";
+        
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            ResultSet rs = pstmt.executeQuery();
+
+            int columnCount = rs.getMetaData().getColumnCount();
+
+            while (rs.next()) {
+                for (int i = 1; i <= columnCount; i++) {
+                    System.out.print(rs.getString(i) + "\t");
+                }
+                System.out.println();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, clause);
+            ResultSet rs = pstmt.executeQuery();
+
+            int columnCount = rs.getMetaData().getColumnCount();
+
+            while (rs.next()) {
+                for (int i = 1; i <= columnCount; i++) {
+                    System.out.print(rs.getString(i) + "\t");
+                }
+                System.out.println();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
+
