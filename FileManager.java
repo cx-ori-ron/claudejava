@@ -29,15 +29,8 @@ public class FileManager {
         } catch (IOException e) {
             System.out.println("Error reading file: " + e.getMessage());
         }
-
-
-        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:sample.db")) {
-            selectAll(conn, args[0]);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
         System.out.println("test");
     }
 }
+
 
