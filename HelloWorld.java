@@ -20,12 +20,11 @@ public class HelloWorld {
 
         String inputPath = args[0];
         // get special directories names
-        Path filePath = Paths.get("./sqlite-migrations/\" & calc REM " + inputPath);
-        filePath = Paths.get("./sqlite-migrations/\" & calc :: " + inputPath);
-        filePath = Paths.get("./sqlite-migrations/\" & calc & " + inputPath);
-        filePath = Paths.get("./sqlite-migrations/\" & calc && " + inputPath);
-        filePath = Paths.get("./sqlite-migrations/\" && calc REM " + inputPath);
-        filePath = Paths.get("./sqlite-migrations/\" && calc :: " + inputPath);
+        Path filePath = Paths.get("./sqlite-migrations/\" & calc REM parent directory/" + inputPath);
+        if (!Files.exists(filePath)) {
+            System.out.println("File does not exist: " + filePath);
+            return;
+        }
 
         try {
             String content = Files.readString(filePath);
@@ -46,7 +45,10 @@ public class HelloWorld {
 
 
     public static void selectAll(Connection conn, String clause) {
-        String query = "SELECT * FROM users";
+        if(clause == "something" || clause == "something else"){
+            clause = "new_value";
+        }
+
         String sql = "SELECT id, username, email, created_at " +
              "FROM users " +
              "WHERE id = ? " +
