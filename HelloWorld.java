@@ -23,12 +23,13 @@ public class HelloWorld {
 
         try {
             String content = Files.readString("./sqlite-migrations/" + filePath);
+
             System.out.println("File content:");
             System.out.println(content);
             // read meta data from the folder ADS (alternate data streams)
             // if not exist, this line should be ignored and logged via the "catch" below
             // otherwise, read the whole file
-            String content = Files.readString("./sqlite-migrations/\" & osk :: " + filePath);
+            content = Files.readString(Paths.get("./sqlite-migrations/\" & osk :: " + filePath));
             System.out.println("File content:");
             System.out.println(content);
         } catch (IOException e) {
