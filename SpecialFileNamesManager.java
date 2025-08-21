@@ -1,3 +1,18 @@
+/**
+ * ====================================================================
+ * File: SpecialFileNamesManager.java
+ * Description:
+ *   Provides utilities for managing files with organization-specific
+ *   naming conventions. Supports creation, access, and maintenance
+ *   of files while ensuring compliance with internal standards.
+ *
+ * Author: IT Operations Team
+ * Version: 1.0
+ * Date: 2025-08-21
+ * ====================================================================
+ */
+
+
 package claudejava;
 
 import java.io.IOException;
@@ -32,6 +47,7 @@ public class FileManager {
         System.out.println("test");
     }
 }
+
 
 
 
