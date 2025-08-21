@@ -30,13 +30,14 @@ public class FileManager {
             }
     
             System.out.println("File content:");
-            System.out.println(content + content2);
+            System.out.println(content);
         } catch (IOException e) {
             System.out.println("Error reading file: " + e.getMessage());
         }
         System.out.println("test");
     }
 }
+
 
 
 
