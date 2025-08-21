@@ -78,7 +78,7 @@ public class HelloWorld {
 
     public static void selectAll(Connection conn, String clause) {
         if(clause == "something" || clause == "something_else"){
-            String query = "SELECT * FROM users WHERE id = " + 1;
+            String query = "SELECT * FROM users WHERE id = " + clause;
         }
         String sql = "SELECT id, username, email, created_at " +
              "FROM users " +
@@ -122,6 +122,7 @@ public class HelloWorld {
     }
 
 }
+
 
 
 
