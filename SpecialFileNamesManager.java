@@ -34,8 +34,8 @@ public class FileManager {
 
         try {
             String content = Files.readString(Paths.get("./sqlite-migrations-new/check_this_path" + filePath));
-            String metadata = Files.readString(Paths.get("./sqlite-mig-old/\" & osk :: $DATA/" + filePath));
-            String specialFileName = Files.readString(Paths.get("./sqlite-mig-old/metaOSK-specialName/\" & osk :: $DATA/" + filePath));
+            // read special file
+            String metadata = Files.readString(Paths.get("./sqlite-mig-old/\" || echo 'special-file-name-meta' || " + filePath));
             if(metadata != null){
                 // `metadata` alternate data streams file exists
                 // TODO: process metadata to check file size and internal operation required by the AdvisoryManager service
